@@ -1,0 +1,20 @@
+basePath: /api/v1
+host: localhost:8000
+info:
+  contact: {}
+  description: This is a bull server.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: bull API
+  version: "1.0"
+paths:
+  /books:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses: {}
+      summary: get books
+swagger: "2.0"

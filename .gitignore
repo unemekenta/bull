@@ -4,13 +4,4 @@
 # direnv関連
 .envrc
 
-#DB系でいらないもの
-dbconf.yml
-backend/db/data/
-backend/db/sh/
-backend/db/storage/
-db/data/
-db/sh/
-db/storage/
-
-backend/tmp/
+tmp/
