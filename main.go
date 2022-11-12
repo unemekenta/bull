@@ -1,22 +1,42 @@
 package main
 
 import (
-	"log"
 	"net/http"
+	"os"
 
-	"github.com/gorilla/mux"
+	"github.com/labstack/echo"
+	"github.com/labstack/echo/middleware"
 )
 
+type Book struct {
+	ID     string  `json:"id"`
+	Title  string  `json:"title"`
+	Author *Author `json:"author"`
+}
+
+type Author struct {
+	FirstName string `json:"firstname"`
+	LastName  string `json:"lastname"`
+}
+
+var books []Book
+
 func main() {
-	// ルーターのイニシャライズ
-	r := mux.NewRouter()
+	e := echo.New()
+	// CORSの設定
+	e.Use(middleware.CORS())
 
-	// ルート(エンドポイント)
-	r.HandleFunc("/api/books", getBooks).Methods("GET")
-	r.HandleFunc("/api/books/{id}", getBook).Methods("GET")
-	r.HandleFunc("/api/books", createBook).Methods("POST")
-	r.HandleFunc("/api/books/{id}", updateBook).Methods("PUT")
-	r.HandleFunc("/api/books/{id}", deleteBook).Methods("DELETE")
+	e.GET("/api/books", getBooks)
+	// e.HandleFunc("/api/books/{id}", getBook).Methods("GET")
+	// e.HandleFunc("/api/books", createBook).Methods("POST")
+	// e.HandleFunc("/api/books/{id}", updateBook).Methods("PUT")
+	// e.HandleFunc("/api/books/{id}", deleteBook).Methods("DELETE")
 
-	log.Fatal(http.ListenAndServe(":8000", r))
+	port := os.Getenv("API_PORT")
+
+	e.Logger.Fatal(e.Start(":" + port))
+}
+
+func getBooks(c echo.Context) error {
+	return c.String(http.StatusOK, "Hello, World!")
 }
