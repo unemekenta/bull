@@ -20,16 +20,48 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
-        "/books": {
+        "/": {
             "get": {
-                "consumes": [
-                    "application/json"
-                ],
                 "produces": [
                     "application/json"
                 ],
-                "summary": "get books",
-                "responses": {}
+                "tags": [
+                    "HelloWorld"
+                ],
+                "summary": "Hello World !",
+                "operationId": "HelloWorldIndex",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/main.Response"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "main.Item": {
+            "type": "object",
+            "properties": {
+                "text": {
+                    "type": "string"
+                }
+            }
+        },
+        "main.Response": {
+            "type": "object",
+            "properties": {
+                "int64": {
+                    "type": "integer"
+                },
+                "string": {
+                    "type": "string"
+                },
+                "world": {
+                    "$ref": "#/definitions/main.Item"
+                }
             }
         }
     }
@@ -38,11 +70,11 @@ const docTemplate = `{
 // SwaggerInfo holds exported Swagger Info so clients can modify it
 var SwaggerInfo = &swag.Spec{
 	Version:          "1.0",
-	Host:             "localhost:8000",
+	Host:             "localhost:1314",
 	BasePath:         "/api/v1",
 	Schemes:          []string{},
-	Title:            "bull API",
-	Description:      "This is a bull server.",
+	Title:            "Swagger Example API",
+	Description:      "This is a sample swagger server.",
 	InfoInstanceName: "swagger",
 	SwaggerTemplate:  docTemplate,
 }

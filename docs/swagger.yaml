@@ -1,20 +1,40 @@
 basePath: /api/v1
-host: localhost:8000
+definitions:
+  main.Item:
+    properties:
+      text:
+        type: string
+    type: object
+  main.Response:
+    properties:
+      int64:
+        type: integer
+      string:
+        type: string
+      world:
+        $ref: '#/definitions/main.Item'
+    type: object
+host: localhost:1314
 info:
   contact: {}
-  description: This is a bull server.
+  description: This is a sample swagger server.
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
-  title: bull API
+  title: Swagger Example API
   version: "1.0"
 paths:
-  /books:
+  /:
     get:
-      consumes:
-      - application/json
+      operationId: HelloWorldIndex
       produces:
       - application/json
-      responses: {}
-      summary: get books
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/main.Response'
+      summary: Hello World !
+      tags:
+      - HelloWorld
 swagger: "2.0"
