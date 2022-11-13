@@ -1,6 +1,6 @@
 # bull
 
-##設計
+## 設計
 ### DDD
 参考: https://techblog.yahoo.co.jp/entry/2021011230061115/
 
