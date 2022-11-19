@@ -1,8 +1,8 @@
 {
     "swagger": "2.0",
     "info": {
-        "description": "This is a sample swagger server.",
-        "title": "Swagger Example API",
+        "description": "This is a bull server.",
+        "title": "bull API",
         "contact": {},
         "license": {
             "name": "Apache 2.0",
@@ -10,19 +10,15 @@
         },
         "version": "1.0"
     },
-    "host": "localhost:1314",
+    "host": "localhost:8000",
     "basePath": "/api/v1",
     "paths": {
-        "/": {
+        "/api/v1/books": {
             "get": {
                 "produces": [
                     "application/json"
                 ],
-                "tags": [
-                    "HelloWorld"
-                ],
-                "summary": "Hello World !",
-                "operationId": "HelloWorldIndex",
+                "summary": "getBooks",
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -35,26 +31,10 @@
         }
     },
     "definitions": {
-        "main.Item": {
-            "type": "object",
-            "properties": {
-                "text": {
-                    "type": "string"
-                }
-            }
-        },
         "main.Response": {
             "type": "object",
             "properties": {
-                "int64": {
-                    "type": "integer"
-                },
-                "string": {
-                    "type": "string"
-                },
-                "world": {
-                    "$ref": "#/definitions/main.Item"
-                }
+                "data": {}
             }
         }
     }
